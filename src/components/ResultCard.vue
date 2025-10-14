@@ -35,8 +35,8 @@ const buttonClass = computed(() => {
     <div class="flex flex-wrap justify-center gap-2 mb-6">
       <span v-for="(num, idx) in numbers" :key="idx" :class="[
         'flex items-center justify-center w-10 h-10 rounded-full text-base font-extrabold text-gray-900 shadow-inner',
-        // Cor do fundo do número baseada na cor do jogo
-        `bg-${props.colorClass.split('-')[1]}-400`
+        // Usa a cor de fundo completa recebida pela prop
+        props.colorClass
       ]">
         {{ String(num).padStart(2, '0') }}
       </span>
