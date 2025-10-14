@@ -10,6 +10,21 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/megasena',
+      name: 'megasena',
+      component: () => import('../views/MegaSenaView.vue'),
+    },
+    {
+      path: '/quina',
+      name: 'quina',
+      component: () => import('../views/QuinaView.vue'),
+    },
+    {
+      path: '/lotofacil',
+      name: 'lotofacil',
+      component: () => import('../views/LotofacilView.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
