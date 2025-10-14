@@ -8,6 +8,16 @@ const gameTitle = 'Quina';
 const gameMin = 1;
 const gameMax = 80;
 const gameNumbers = 5;
+
+// Mapeamento explícito para garantir que o Tailwind gere as classes
+const gradientFrom = {
+  blue: 'from-blue-400',
+  green: 'from-green-400',
+  red: 'from-red-400',
+  yellow: 'from-yellow-400',
+  indigo: 'from-indigo-400',
+  // adicione outras cores conforme necessário
+}[gameColor] || 'from-blue-400';
 </script>
 
 <template>
@@ -16,7 +26,7 @@ const gameNumbers = 5;
 
       <header class="text-center mb-12">
         <h1
-          :class="['text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r', `from-${gameColor}-400 to-indigo-500`]">
+          :class="['text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r', gradientFrom, 'to-indigo-500']">
           {{ gameTitle }}
         </h1>
         <p class="mt-4 text-xl text-gray-400">
@@ -36,7 +46,7 @@ const gameNumbers = 5;
           <p class="text-5xl font-extrabold text-white">R$ 5.500.000</p>
           <p class="mt-2 text-lg text-gray-400">Terça-feira, 14 de Outubro</p>
           <button
-            :class="['mt-6 w-full py-3 text-white font-bold rounded-lg shadow-lg transition-colors', `bg-${gameColor}-600 hover:bg-${gameColor}-700`]">
+            :class="['mt-6 w-full py-3 font-bold rounded-lg shadow-lg transition-colors', `bg-${gameColor}-600 hover:bg-${gameColor}-700`, `text-${gameColor}-400 hover:text-${gameColor}-300`]">
             Fazer Aposta Online
           </button>
         </section>
