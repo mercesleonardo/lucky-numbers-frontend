@@ -25,8 +25,7 @@ const lotofacil = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/lotofacil
 
       <div class="mb-12">
         <GameSimulator :min-number="gameMin" :max-number="gameMax" :numbers-per-game="gameNumbers"
-          :color-class="'text-purple-400'"
-          :bg-class="'bg-purple-500'" />
+          :color-class="'text-purple-400'" :bg-class="'bg-purple-500'" />
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -45,14 +44,15 @@ const lotofacil = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/lotofacil
         <div class="lg:col-span-2 p-6 bg-gray-800 rounded-xl shadow-xl">
           <h2 class="text-3xl text-purple-400 font-bold mb-6 border-b border-gray-700 pb-2">Último Resultado</h2>
 
-          <div class="flex justify-between items-center bg-gray-700 p-4 rounded-lg mb-3 text-sm">
-            <div>
+          <div
+            class="flex flex-col lg:flex-row lg:justify-between lg:items-center bg-gray-700 p-4 rounded-lg mb-3 text-sm">
+            <div class="mb-3 lg:mb-0">
               <p class="font-semibold text-purple-400">Concurso 3051</p>
               <p class="text-gray-400">Hoje, 13/10/2025</p>
             </div>
-            <div class="flex flex-wrap gap-1 max-w-lg justify-end">
+            <div class="flex flex-wrap gap-2 max-w-lg justify-end">
               <span v-for="n in [1, 2, 3, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 21, 23]" :key="n"
-                :class="['w-6 h-6 flex items-center justify-center rounded-full font-bold text-gray-900 text-xs bg-purple-500']">
+                :class="['w-8 h-8 flex items-center justify-center rounded-full font-bold text-gray-900 text-base bg-purple-500']">
                 {{ String(n).padStart(2, '0') }}
               </span>
             </div>

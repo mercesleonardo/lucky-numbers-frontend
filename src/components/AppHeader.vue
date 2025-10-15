@@ -53,7 +53,7 @@ const activeClasses = 'bg-gray-950/50 text-white';
           <div class="flex shrink-0 items-center">
             <RouterLink :to="{ name: 'home' }">
               <img src="/src/assets/lucky-numbers.png" alt="LuckyNumbers"
-                class="h-8 w-auto" />
+                class="h-10 w-auto" />
             </RouterLink>
           </div>
 

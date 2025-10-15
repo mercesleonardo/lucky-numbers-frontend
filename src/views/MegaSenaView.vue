@@ -14,8 +14,7 @@ const megasena = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/mega-sena'
     <div class="container mx-auto py-8 px-4">
 
       <header class="text-center mb-12">
-        <h1
-          :class="['text-5xl font-extrabold text-green-400']">
+        <h1 :class="['text-5xl font-extrabold text-green-400']">
           Mega-Sena
         </h1>
         <p class="mt-4 text-xl text-gray-400">
@@ -24,7 +23,8 @@ const megasena = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/mega-sena'
       </header>
 
       <div class="mb-12">
-        <GameSimulator :min-number="gameMin" :max-number="gameMax" :numbers-per-game="gameNumbers" :color-class="'text-green-400'" :bg-class="'bg-green-500'" />
+        <GameSimulator :min-number="gameMin" :max-number="gameMax" :numbers-per-game="gameNumbers"
+          :color-class="'text-green-400'" :bg-class="'bg-green-500'" />
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -43,8 +43,8 @@ const megasena = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/mega-sena'
         <div class="lg:col-span-2 p-6 bg-gray-800 rounded-xl shadow-xl">
           <h2 class="text-3xl text-green-400 font-bold mb-6 border-b border-gray-700 pb-2">Último Resultado</h2>
 
-          <div class="flex justify-between items-center bg-gray-700 p-4 rounded-lg mb-3">
-            <div>
+          <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center bg-gray-700 p-4 rounded-lg mb-3">
+            <div class="mb-3 lg:mb-0">
               <p class="font-semibold">Concurso 2701</p>
               <p class="text-sm text-gray-400">Sábado, 11/10/2025</p>
             </div>

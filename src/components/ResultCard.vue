@@ -22,7 +22,7 @@ const buttonClass = computed(() => {
 
 <template>
   <div
-    class="p-6 rounded-xl backdrop-blur-md bg-gray-800/60 border border-gray-700 shadow-2xl transition-all duration-300 hover:shadow-teal-500/30">
+    class="p-6 h-full flex flex-col rounded-xl backdrop-blur-md bg-gray-800/60 border border-gray-700 shadow-2xl transition-all duration-300 hover:shadow-teal-500/30">
 
     <div :class="['text-2xl font-extrabold mb-3 text-center', `text-${props.colorClass.split('-')[1]}-400`]">
       {{ title }}
@@ -32,19 +32,20 @@ const buttonClass = computed(() => {
       Concurso {{ contest }} | {{ date }}
     </div>
 
-    <div class="flex flex-wrap justify-center gap-2 mb-6">
+    <div class="flex flex-wrap justify-center gap-2 mb-2">
       <span v-for="(num, idx) in numbers" :key="idx" :class="[
         'flex items-center justify-center w-10 h-10 rounded-full text-base font-extrabold text-gray-900 shadow-inner',
-        // Usa a cor de fundo completa recebida pela prop
         props.colorClass
       ]">
         {{ String(num).padStart(2, '0') }}
       </span>
     </div>
 
-    <div class="text-center">
+    <div class="flex-1"></div>
+
+    <div class="text-center mt-2">
       <RouterLink :to="{ name: routeName }" :class="buttonClass">
-        Ver Detalhes do Jogo
+        Criar jogos pelo simulador
       </RouterLink>
     </div>
   </div>

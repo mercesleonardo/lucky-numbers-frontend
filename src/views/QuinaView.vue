@@ -43,8 +43,8 @@ const quina = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/quina';
         <div class="lg:col-span-2 p-6 bg-gray-800 rounded-xl shadow-xl">
           <h2 class="text-3xl text-blue-400 font-bold mb-6 border-b border-gray-700 pb-2">Último Resultado</h2>
 
-          <div class="flex justify-between items-center bg-gray-700 p-4 rounded-lg mb-3">
-            <div>
+          <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center bg-gray-700 p-4 rounded-lg mb-3">
+            <div class="mb-3 lg:mb-0">
               <p class="font-semibold text-blue-400">Concurso 6502</p>
               <p class="text-sm text-gray-400">Segunda-feira, 13/10/2025</p>
             </div>
