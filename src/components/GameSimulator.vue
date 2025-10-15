@@ -30,7 +30,7 @@ function generateSingleGame(): number[] {
 
 // Função principal para gerar N jogos
 function generateGames() {
-  if (gamesToGenerate.value < 1 || gamesToGenerate.value > 10) {
+  if (gamesToGenerate.value < 1 || gamesToGenerate.value > 20) {
     alert("Por favor, escolha entre 1 e 10 jogos.");
     return;
   }
@@ -47,8 +47,8 @@ function generateGames() {
     <h2 :class="['text-3xl font-bold text-center mb-6', props.colorClass]">Simulador e Geração de Jogos</h2>
 
     <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
-      <label for="num-games" class="text-lg text-gray-300">Quantos jogos deseja gerar? (Máx. 10)</label>
-      <input id="num-games" type="number" v-model.number="gamesToGenerate" min="1" max="10"
+      <label for="num-games" class="text-lg text-gray-300">Quantos jogos deseja gerar? (Máx. 20)</label>
+      <input id="num-games" type="number" v-model.number="gamesToGenerate" min="1" max="20"
         class="w-20 p-2 text-center rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-teal-500 focus:border-teal-500" />
       <button @click="generateGames"
         :class="['px-6 py-2 font-bold rounded-lg transition-colors shadow-md', props.colorClass]">
