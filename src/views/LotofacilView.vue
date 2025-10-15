@@ -25,7 +25,8 @@ const lotofacil = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/lotofacil
 
       <div class="mb-12">
         <GameSimulator :min-number="gameMin" :max-number="gameMax" :numbers-per-game="gameNumbers"
-          :color-class="'text-purple-400'" />
+          :color-class="'text-purple-400'"
+          :bg-class="'bg-purple-500'" />
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">

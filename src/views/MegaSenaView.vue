@@ -24,7 +24,7 @@ const megasena = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/mega-sena'
       </header>
 
       <div class="mb-12">
-        <GameSimulator :min-number="gameMin" :max-number="gameMax" :numbers-per-game="gameNumbers" :color-class="'text-green-400'" />
+        <GameSimulator :min-number="gameMin" :max-number="gameMax" :numbers-per-game="gameNumbers" :color-class="'text-green-400'" :bg-class="'bg-green-500'" />
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">

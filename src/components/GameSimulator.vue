@@ -6,6 +6,7 @@ const props = defineProps<{
   maxNumber: number; // Ex: 60 (Mega Sena)
   numbersPerGame: number; // Ex: 6 (Mega Sena)
   colorClass: string; // nova prop para cor do jogo
+  bgClass: string; // nova prop para o fundo dos números
 }>();
 
 // Estado para armazenar os jogos gerados
@@ -61,10 +62,10 @@ function generateGames() {
       <div class="space-y-4">
         <div v-for="(game, index) in generatedGames" :key="index"
           class="p-4 bg-gray-700 rounded-lg flex flex-wrap items-center justify-between shadow-lg">
-          <span class="text-lg font-bold text-teal-400 mr-4">Jogo #{{ index + 1 }}:</span>
+          <span :class="['text-lg font-bold mr-4', props.colorClass]">Jogo #{{ index + 1 }}:</span>
           <div class="flex flex-wrap gap-2">
             <span v-for="num in game" :key="num"
-              class="w-8 h-8 flex items-center justify-center rounded-full bg-teal-500 text-gray-900 text-sm font-extrabold shadow-md">
+              :class="['w-8 h-8 flex items-center justify-center rounded-full text-gray-900 text-sm font-extrabold shadow-md', props.bgClass]">
               {{ String(num).padStart(2, '0') }}
             </span>
           </div>

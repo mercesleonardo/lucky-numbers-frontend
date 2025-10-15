@@ -24,7 +24,7 @@ const quina = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/quina';
 
       <div class="mb-12">
         <GameSimulator :min-number="gameMin" :max-number="gameMax" :numbers-per-game="gameNumbers"
-          :color-class="'text-blue-400'" />
+          :color-class="'text-blue-400'" :bg-class="'bg-blue-500'" />
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
