@@ -2,22 +2,11 @@
 import GameSimulator from '../components/GameSimulator.vue';
 import { RouterLink } from 'vue-router';
 
-// Variáveis de cor e informação para a Lotofácil
-const gameColor = 'purple';
-const gameTitle = 'Lotofácil';
+// Variáveis de informação para a Lotofácil
 const gameMin = 1;
 const gameMax = 25;
 const gameNumbers = 15;
-
-// Mapeamento explícito para garantir que o Tailwind gere as classes
-const gradientFrom = {
-  purple: 'from-purple-400',
-  blue: 'from-blue-400',
-  red: 'from-red-400',
-  yellow: 'from-yellow-400',
-  indigo: 'from-indigo-400',
-  // adicione outras cores conforme necessário
-}[gameColor] || 'from-purple-400';
+const lotofacil = 'https://www.loteriasonline.caixa.gov.br/silce-web/#/lotofacil';
 
 </script>
 
@@ -26,9 +15,8 @@ const gradientFrom = {
     <div class="container mx-auto py-8 px-4">
 
       <header class="text-center mb-12">
-        <h1
-          :class="['text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r', gradientFrom, 'to-indigo-500']">
-          {{ gameTitle }}
+        <h1 :class="['text-5xl font-extrabold text-purple-400']">
+          Lotofácil
         </h1>
         <p class="mt-4 text-xl text-gray-400">
           Gerador de jogos, histórico de resultados e informações.
@@ -36,42 +24,37 @@ const gradientFrom = {
       </header>
 
       <div class="mb-12">
-        <GameSimulator :min-number="gameMin" :max-number="gameMax" :numbers-per-game="gameNumbers" />
+        <GameSimulator :min-number="gameMin" :max-number="gameMax" :numbers-per-game="gameNumbers"
+          :color-class="'text-purple-400'" />
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
         <section
-          :class="['lg:col-span-1 p-6 bg-gray-800/80 rounded-xl shadow-xl text-center', `border-l-4 border-${gameColor}-500`]">
-          <h2 :class="['text-3xl font-bold mb-4', `text-${gameColor}-400`]">Próximo Sorteio</h2>
+          :class="['lg:col-span-1 p-6 bg-gray-800/80 rounded-xl shadow-xl text-center border-l-4 border-purple-500']">
+          <h2 :class="['text-3xl font-bold mb-4 text-purple-400']">Próximo Sorteio</h2>
           <p class="text-5xl font-extrabold text-white">R$ 2.000.000</p>
           <p class="mt-2 text-lg text-gray-400">Diário, amanhã</p>
-          <button
-            :class="['mt-6 w-full py-3 font-bold rounded-lg shadow-lg transition-colors', `bg-${gameColor}-600 hover:bg-${gameColor}-700`, `text-${gameColor}-400 hover:text-${gameColor}-300`]">
+          <a :href="lotofacil" target="_blank" rel="noopener noreferrer"
+            :class="['mt-6 w-full inline-block py-3 font-bold rounded-lg shadow-lg transition-colors bg-black hover:bg-gray-900 text-purple-400 hover:text-purple-300 text-center']">
             Fazer Aposta Online
-          </button>
+          </a>
         </section>
 
         <div class="lg:col-span-2 p-6 bg-gray-800 rounded-xl shadow-xl">
-          <h2 class="text-3xl font-bold mb-6 border-b border-gray-700 pb-2">Últimos Resultados</h2>
+          <h2 class="text-3xl text-purple-400 font-bold mb-6 border-b border-gray-700 pb-2">Último Resultado</h2>
 
           <div class="flex justify-between items-center bg-gray-700 p-4 rounded-lg mb-3 text-sm">
             <div>
-              <p class="font-semibold">Concurso 3051</p>
+              <p class="font-semibold text-purple-400">Concurso 3051</p>
               <p class="text-gray-400">Hoje, 13/10/2025</p>
             </div>
             <div class="flex flex-wrap gap-1 max-w-lg justify-end">
               <span v-for="n in [1, 2, 3, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 21, 23]" :key="n"
-                :class="['w-6 h-6 flex items-center justify-center rounded-full font-bold text-gray-900 text-xs', `bg-${gameColor}-500`]">
+                :class="['w-6 h-6 flex items-center justify-center rounded-full font-bold text-gray-900 text-xs bg-purple-500']">
                 {{ String(n).padStart(2, '0') }}
               </span>
             </div>
-          </div>
-
-          <div class="text-center mt-6">
-            <button :class="['font-semibold transition-colors', `text-${gameColor}-400 hover:text-${gameColor}-300`]">
-              Ver histórico completo
-            </button>
           </div>
         </div>
       </div>

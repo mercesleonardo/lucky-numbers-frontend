@@ -42,21 +42,18 @@ const latestResults = computed(() => [
         Últimos Resultados da Loteria
       </h1>
 
-      <p class="text-lg text-gray-300 text-center mb-8">Confira os últimos resultados das loterias mais populares.</p>
+      <p class="text-lg text-gray-300 text-center mb-4 font-semibold">
+        Confira os últimos resultados das loterias mais populares e aproveite para criar jogos únicos e personalizados
+        do seu jeito.
+      </p>
+      <p class="text-base text-gray-300 text-center mb-8 font-semibold">
+        Experimente, simule e aumente suas chances de sorte!
+      </p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
         <ResultCard v-for="result in latestResults" :key="result.title" :title="result.title" :numbers="result.numbers"
           :contest="result.contest" :date="result.date" :colorClass="result.colorClass" :routeName="result.routeName" />
       </div>
-
-      <!-- <section class="mt-16 p-8 bg-gray-800/80 rounded-xl shadow-inner text-center border border-gray-700">
-        <h2 class="text-3xl font-bold text-indigo-400">Próximo Grande Sorteio</h2>
-        <p class="text-lg text-gray-300 mt-2">A Mega-Sena acumulou em **R$ 150 Milhões**! Não perca a chance.</p>
-        <RouterLink :to="{ name: 'megasena' }"
-          class="mt-6 inline-block px-10 py-3 bg-red-600 text-white font-bold text-lg rounded-lg shadow-xl hover:bg-red-700 transition-colors duration-200 transform hover:scale-[1.03]">
-          Ver Detalhes do Acúmulo
-        </RouterLink>
-      </section> -->
 
     </div>
   </main>

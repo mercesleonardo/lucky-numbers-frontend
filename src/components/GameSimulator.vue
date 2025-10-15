@@ -5,6 +5,7 @@ const props = defineProps<{
   minNumber: number; // Ex: 1 (Mega Sena)
   maxNumber: number; // Ex: 60 (Mega Sena)
   numbersPerGame: number; // Ex: 6 (Mega Sena)
+  colorClass: string; // nova prop para cor do jogo
 }>();
 
 // Estado para armazenar os jogos gerados
@@ -42,14 +43,14 @@ function generateGames() {
 
 <template>
   <section class="p-6 bg-gray-800/80 rounded-xl shadow-xl border border-gray-700">
-    <h2 class="text-3xl font-bold text-center mb-6 text-teal-400">Simulador e Geração de Jogos</h2>
+    <h2 :class="['text-3xl font-bold text-center mb-6', props.colorClass]">Simulador e Geração de Jogos</h2>
 
     <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
       <label for="num-games" class="text-lg text-gray-300">Quantos jogos deseja gerar? (Máx. 10)</label>
       <input id="num-games" type="number" v-model.number="gamesToGenerate" min="1" max="10"
         class="w-20 p-2 text-center rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-teal-500 focus:border-teal-500" />
       <button @click="generateGames"
-        class="px-6 py-2 bg-teal-600 text-white font-bold rounded-lg hover:bg-teal-700 transition-colors shadow-md">
+        :class="['px-6 py-2 font-bold rounded-lg transition-colors shadow-md', props.colorClass]">
         Gerar Jogos
       </button>
     </div>
