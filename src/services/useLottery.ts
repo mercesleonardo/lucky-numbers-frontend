@@ -1,12 +1,20 @@
 import { ref, reactive } from 'vue'
 import { lotteryService } from '../services/lotteryService'
 
-// Definição de tipos
+// --- Tipos ---
+export interface Prize {
+  tier: string;
+  description: string;
+  winners: number;
+  prize_amount: number;
+}
+
 export interface Contest {
   contest: {
     draw_number: number
     draw_date: string
     numbers: string[]
+    prizes: Prize[]
   }
   game: {
     name: string
@@ -19,8 +27,17 @@ export interface SessionStats {
   remaining: number
 }
 
-interface GamesInfo {
-  // Adicione aqui a estrutura das informações dos jogos
+export interface GameInfo {
+  name: string;
+  pick_count: number;
+  number_range: string;
+  total_numbers: number;
+}
+
+export interface GamesInfoResponse {
+  supported_games: { [key: string]: GameInfo };
+  daily_limit: number;
+  rules: { [key: string]: string };
 }
 
 interface GeneratedGames {
@@ -30,21 +47,23 @@ interface GeneratedGames {
   [key: string]: number[][]
 }
 
-export function useLottery() {
-  const loading = ref<boolean>(false)
-  const loadingContest = ref<boolean>(false)
-  const error = ref<any | null>(null)
-  const contests = ref<Contest[]>([])
-  const latestContest = ref<Contest | null>(null)
-  const sessionStats = ref<SessionStats | null>(null)
-  const gamesInfo = ref<GamesInfo | null>(null)
+// --- Estado Compartilhado (Singleton) ---
+// Declarado fora da função para ser único em toda a aplicação
+const loading = ref<boolean>(false)
+const loadingContest = ref<boolean>(false)
+const error = ref<any | null>(null)
+const contests = ref<Contest[]>([])
+const latestContest = ref<Contest | null>(null)
+const sessionStats = ref<SessionStats | null>(null)
+const gamesInfo = ref<GamesInfoResponse | null>(null)
+const generatedGames = reactive<GeneratedGames>({
+  megasena: [],
+  lotofacil: [],
+  quina: [],
+})
 
-  // Estado reativo para jogos gerados
-  const generatedGames = reactive<GeneratedGames>({
-    megasena: [],
-    lotofacil: [],
-    quina: [],
-  })
+// --- Composable Function ---
+export function useLottery() {
 
   // Carregar últimos concursos (plural)
   const loadLatestContests = async () => {
@@ -96,7 +115,7 @@ export function useLottery() {
       } else {
         error.value = err;
       }
-      throw err; 
+      throw err;
     } finally {
       loading.value = false
     }
@@ -134,6 +153,7 @@ export function useLottery() {
     }
   }
 
+  // Retorna o estado compartilhado e as funções para manipulá-lo
   return {
     loading,
     loadingContest,
@@ -146,7 +166,7 @@ export function useLottery() {
     loadLatestContests,
     loadLatestContest,
     generateGames,
-    loadSessionStats, // <-- Expondo a nova função
+    loadSessionStats,
     checkUserNumbers,
     loadGamesInfo,
   }

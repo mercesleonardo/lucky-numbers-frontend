@@ -1,26 +1,35 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useLottery } from '../services/useLottery';
 
-// 1. Definição das Rotas para Navegação
-const navItems = [
-  { name: 'Home', routeName: 'home' },
-  { name: 'Mega-Sena', routeName: 'megasena' },
-  { name: 'Quina', routeName: 'quina' },
-  { name: 'Lotofácil', routeName: 'lotofacil' },
-];
-
-// 2. Lógica para controle do menu mobile
+// 1. Lógica para controle do menu mobile
 const isMobileMenuOpen = ref(false);
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 };
 
-// Classes de estilo para os links
+// 2. Obtenção de dados dos jogos
+const { gamesInfo } = useLottery();
+
+// 3. Geração dinâmica dos itens de navegação
+const navItems = computed(() => {
+  const items = [{ name: 'Home', routeName: 'home' }];
+  if (gamesInfo.value) {
+    for (const slug in gamesInfo.value.supported_games) {
+      items.push({
+        name: gamesInfo.value.supported_games[slug].name,
+        routeName: slug,
+      });
+    }
+  }
+  return items;
+});
+
+// 4. Classes de estilo para os links
 const baseLinkClasses = 'rounded-md px-3 py-2 text-sm font-medium transition-colors';
 const inactiveClasses = 'text-gray-300 hover:bg-white/5 hover:text-white';
-// Classe para link ativo, adaptada do seu HTML original
 const activeClasses = 'bg-gray-950/50 text-white';
 </script>
 

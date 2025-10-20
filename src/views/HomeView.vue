@@ -7,6 +7,7 @@ const {
   contests: latestResults,
   loading,
   loadLatestContests,
+  gamesInfo,
 } = useLottery()
 
 onMounted(loadLatestContests)
@@ -52,6 +53,23 @@ const getGameDetails = (gameSlug: string) => {
       <p class="text-base text-gray-300 text-center mb-8 font-semibold">
         Experimente, simule e aumente suas chances de sorte!
       </p>
+
+      <!-- Seção de Regras e Limites -->
+      <div v-if="gamesInfo" class="bg-gray-800/50 p-6 rounded-xl shadow-lg mb-12 border border-white/10">
+        <h2 class="text-2xl font-bold text-teal-400 mb-4 text-center">Regras e Limites do Gerador</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+          <div>
+            <h3 class="font-semibold text-white">Limite Diário</h3>
+            <p class="text-gray-300">Você pode gerar até <span class="font-bold text-white">{{ gamesInfo.daily_limit }}</span> jogos por dia.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white">Geração Inteligente</h3>
+            <ul class="text-gray-300">
+              <li v-for="(rule, key) in gamesInfo.rules" :key="key">{{ rule }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
       <div v-if="loading" class="text-center">
         <p class="text-2xl">Carregando resultados...</p>
