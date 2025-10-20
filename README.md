@@ -1,54 +1,74 @@
-# lucky-numbers-frontend
+# Lucky Numbers Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Este é o frontend para o projeto **Lucky Numbers**, uma aplicação web para visualização de resultados de loterias, geração de jogos e conferência de resultados. A interface é construída com Vue.js 3, Vite e TailwindCSS.
 
-## Recommended IDE Setup
+## ✨ Funcionalidades
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+-   **Resultados Recentes:** Visualização dos últimos resultados dos jogos de loteria suportados (Mega-Sena, Quina, Lotofácil).
+-   **Detalhes do Concurso:** Exibição de números sorteados e tabela detalhada de prêmios para cada concurso.
+-   **Gerador de Jogos:** Ferramenta para gerar jogos aleatórios, com limite de uso diário por sessão.
+-   **Conferidor de Jogos:** Funcionalidade para que o usuário insira um jogo e verifique se já foi premiado em concursos anteriores.
+-   **Estrutura Dinâmica:** O menu de navegação e as informações dos jogos são carregados dinamicamente a partir da API, permitindo fácil adição de novos jogos no futuro.
 
-## Recommended Browser Setup
+## 🛠️ Tecnologias Utilizadas
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+-   **Vue.js 3:** Framework progressivo para construção de interfaces.
+-   **Vite:** Ferramenta de build moderna e ultrarrápida.
+-   **TypeScript:** Superset de JavaScript que adiciona tipagem estática.
+-   **TailwindCSS:** Framework CSS utility-first para estilização rápida.
+-   **Vue Router:** Roteamento para a aplicação.
+-   **Axios:** Cliente HTTP para comunicação com a API.
+-   **Vitest:** Framework de testes unitários.
 
-## Type Support for `.vue` Imports in TS
+## 🚀 Instalação e Execução
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Siga os passos abaixo para configurar e executar o projeto em seu ambiente de desenvolvimento.
 
-## Customize configuration
+### Pré-requisitos
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+-   [Node.js](https://nodejs.org/) (versão `^20.19.0 || >=22.12.0` conforme `package.json`)
+-   [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 
-## Project Setup
+### 1. Clone o Repositório
 
-```sh
+```bash
+git clone https://github.com/seu-usuario/lucky-numbers-frontend.git
+cd lucky-numbers-frontend
+```
+
+### 2. Instale as Dependências
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 3. Configure o Ambiente
 
-```sh
+A aplicação precisa se conectar a uma API backend. A URL da API pode ser configurada através de variáveis de ambiente.
+
+Crie um arquivo chamado `.env.local` na raiz do projeto e adicione a seguinte variável:
+
+```
+VITE_API_BASE_URL=http://127.0.0.1:8000/api/
+```
+
+*Observação: Atualmente, a URL da API está fixa no arquivo `src/services/api.ts`. Recomenda-se refatorar para usar a variável de ambiente acima para maior flexibilidade entre ambientes.*
+
+### 4. Execute o Projeto
+
+Para iniciar o servidor de desenvolvimento com hot-reload:
+
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+A aplicação estará disponível em `http://localhost:5173` (ou outra porta, se a 5173 estiver em uso).
 
-```sh
-npm run build
-```
+## 📜 Scripts Disponíveis
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+-   `npm run dev`: Inicia o servidor de desenvolvimento.
+-   `npm run build`: Compila e minifica o projeto para produção.
+-   `npm run preview`: Pré-visualiza a build de produção localmente.
+-   `npm run test:unit`: Executa os testes unitários com Vitest.
+-   `npm run lint`: Executa o linter (ESLint) para encontrar e corrigir problemas no código.
+-   `npm run format`: Formata o código com Prettier.
