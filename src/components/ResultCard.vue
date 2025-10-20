@@ -7,15 +7,23 @@ const props = defineProps<{
   numbers: number[];
   contest: string | number;
   date: string;
-  // Nova prop para aplicar a cor do jogo
   colorClass: string;
-  // Nova prop para o nome da rota
   routeName: string;
 }>();
 
+const formattedDate = computed(() => {
+  if (!props.date) return '';
+  // Adicionado timeZone: 'UTC' para evitar que a data mude baseada no fuso horário do usuário
+  return new Date(props.date).toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    timeZone: 'UTC'
+  });
+});
+
 // Calcula a classe do botão/tag baseado na cor principal
 const buttonClass = computed(() => {
-  // Exemplo: 'bg-green-600 hover:bg-green-700'
   return `mt-4 inline-block text-white px-6 py-2 rounded-lg font-bold shadow-lg transition-all duration-200 transform hover:scale-105 ${props.colorClass}`;
 });
 </script>
@@ -29,13 +37,12 @@ const buttonClass = computed(() => {
     </div>
 
     <div class="text-sm text-gray-400 text-center mb-5">
-      Concurso {{ contest }} | {{ date }}
+      Concurso {{ contest }} | {{ formattedDate }}
     </div>
 
     <div class="flex flex-wrap justify-center gap-2 mb-6">
       <span v-for="(num, idx) in numbers" :key="idx" :class="[
         'flex items-center justify-center w-10 h-10 rounded-full text-base font-extrabold text-gray-900 shadow-inner',
-        // Usa a cor de fundo completa recebida pela prop
         props.colorClass
       ]">
         {{ String(num).padStart(2, '0') }}
