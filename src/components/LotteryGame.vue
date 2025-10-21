@@ -77,16 +77,34 @@ onMounted(() => {
   loadSessionStats();
 });
 
-const colorClasses = computed(() => {
-  return {
-    text: `text-${props.color}-400`,
-    bg: `bg-${props.color}-500`,
-    ring: `focus:ring-${props.color}-500`,
-    border: `focus:border-${props.color}-500`,
-    buttonBg: `bg-${props.color}-600`,
-    buttonHoverBg: `hover:bg-${props.color}-700`,
-  }
-});
+const colorMap = {
+  green: {
+    text: 'text-green-400',
+    bg: 'bg-green-500',
+    ring: 'focus:ring-green-500',
+    border: 'focus:border-green-500',
+    buttonBg: 'bg-green-600',
+    buttonHoverBg: 'hover:bg-green-700',
+  },
+  purple: {
+    text: 'text-purple-400',
+    bg: 'bg-purple-500',
+    ring: 'focus:ring-purple-500',
+    border: 'focus:border-purple-500',
+    buttonBg: 'bg-purple-600',
+    buttonHoverBg: 'hover:bg-purple-700',
+  },
+  blue: {
+    text: 'text-blue-400',
+    bg: 'bg-blue-500',
+    ring: 'focus:ring-blue-500',
+    border: 'focus:border-blue-500',
+    buttonBg: 'bg-blue-600',
+    buttonHoverBg: 'hover:bg-blue-700',
+  },
+}
+
+const colorClasses = computed(() => colorMap[props.color]);
 
 const formatCurrency = (value: number) => {
   return new Intl.NumberFormat('pt-BR', {
@@ -134,7 +152,7 @@ const formatCurrency = (value: number) => {
               :class="[colorClasses.buttonBg, colorClasses.buttonHoverBg]">
               <span v-if="loading">Gerando...</span>
               <span v-else-if="maxGamesAllowed === 0">Limite Atingido</span>
-              <span v-else>Gerar Jogos</span>
+              <span v-else :class="colorClasses.text">Gerar Jogos</span>
             </button>
           </div>
 

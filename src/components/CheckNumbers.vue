@@ -69,7 +69,7 @@ const colorClasses = {
         <button @click="handleCheck" :disabled="loading"
           class="text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all disabled:bg-gray-500 disabled:cursor-not-allowed" :class="[colorClasses.buttonBg, colorClasses.buttonHoverBg]">
           <span v-if="loading">Conferindo...</span>
-          <span v-else>Conferir Jogo</span>
+          <span v-else :class="colorClasses.text">Conferir Jogo</span>
         </button>
       </div>
 
