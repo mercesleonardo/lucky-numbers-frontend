@@ -46,13 +46,11 @@ npm install
 
 A aplicação precisa se conectar a uma API backend. A URL da API pode ser configurada através de variáveis de ambiente.
 
-Crie um arquivo chamado `.env.local` na raiz do projeto e adicione a seguinte variável:
+Crie um arquivo chamado `.env.local` na raiz do projeto (você pode copiar o `.env.example`) e adicione a seguinte variável:
 
 ```
 VITE_API_BASE_URL=http://127.0.0.1:8000/api/
 ```
-
-*Observação: Atualmente, a URL da API está fixa no arquivo `src/services/api.ts`. Recomenda-se refatorar para usar a variável de ambiente acima para maior flexibilidade entre ambientes.*
 
 ### 4. Execute o Projeto
 
